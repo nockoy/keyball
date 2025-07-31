@@ -27,6 +27,8 @@ enum custom_keycodes {
     KC_PLACEHOLDER_5,    // User5 (未使用)
     KC_CTRL_W,           // User6 - Ctrl+W (タブを閉じる)
     KC_CTRL_R,           // User7 - Ctrl+R (ページリロード)
+    KC_CHROME_PREV_TAB,  // User8 - Cmd+Option+左矢印 (前のタブ)
+    KC_CHROME_NEXT_TAB,  // User9 - Cmd+Option+右矢印 (次のタブ)
 };
 
 // トラックボール制御用の変数
@@ -117,6 +119,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
                 unregister_code(KC_R);
                 unregister_code(KC_LCTL);
+            }
+            return false;
+
+        case KC_CHROME_NEXT_TAB:
+            // Cmd+Option+右矢印 (次のタブ)
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LALT);
+                register_code(KC_RGHT);
+                enable_mouse_layer();
+            } else {
+                unregister_code(KC_RGHT);
+                unregister_code(KC_LALT);
+                unregister_code(KC_LGUI);
+            }
+            return false;
+
+        case KC_CHROME_PREV_TAB:
+            // Cmd+Option+左矢印 (前のタブ)
+            if (record->event.pressed) {
+                register_code(KC_LGUI);
+                register_code(KC_LALT);
+                register_code(KC_LEFT);
+                enable_mouse_layer();
+            } else {
+                unregister_code(KC_LEFT);
+                unregister_code(KC_LALT);
+                unregister_code(KC_LGUI);
             }
             return false;
 

@@ -59,6 +59,7 @@ A      S        D         F        ...  J        K         L          ;
 | ページリロード   | User 7         | Ctrl+R                   | ブラウザページの更新                              |
 | 前のタブ         | User 8         | Cmd+Option+左矢印        | Chrome/Safari で前のタブに移動                    |
 | 次のタブ         | User 9         | Cmd+Option+右矢印        | Chrome/Safari で次のタブに移動                    |
+| ウィンドウ最小化 | User 10        | Cmd+M                    | アクティブなウィンドウを最小化                    |
 
 ## 使い方
 

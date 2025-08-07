@@ -37,6 +37,7 @@ const uint16_t mouse_layer = 6;   // マウスレイヤー
 uint16_t layer_timer;             // レイヤー切り替え用タイマー
 bool scroll_mode = false;         // スクロールモードの状態
 uint16_t layer_timeout = 1000;    // レイヤー3から他のレイヤーに戻る時間（ミリ秒）
+int16_t movement_threshold = 3;   // レイヤー遷移のための最小動き量の閾値
 
 // スクロール制御用の変数
 int16_t scroll_v_counter = 0;
@@ -180,9 +181,26 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
     int16_t current_x = mouse_report.x;
     int16_t current_y = mouse_report.y;
     
-    // トラックボールが動いたらマウスレイヤーを有効にする
+    // 現在layer6にいるかどうかをチェック
+    bool is_mouse_layer_active = layer_state_is(mouse_layer);
+    
+    // トラックボールが動いた場合の処理
     if (current_x != 0 || current_y != 0) {
-        enable_mouse_layer();
+        // layer6にいない場合は閾値をチェックしてから遷移
+        if (!is_mouse_layer_active) {
+            if (my_abs(current_x) >= movement_threshold || my_abs(current_y) >= movement_threshold) {
+                enable_mouse_layer();
+            } else {
+                // 閾値未満の微小な動きは無視
+                mouse_report.x = 0;
+                mouse_report.y = 0;
+                return mouse_report;
+            }
+        }
+        // layer6にいる場合は閾値なしで高感度（タイマーをリセット）
+        else {
+            layer_timer = timer_read();
+        }
         
         if (scroll_mode) {
             // スクロールモードの場合
@@ -219,9 +237,6 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
             mouse_report.h = scroll_h;
             mouse_report.v = scroll_v;
         }
-    } else {
-        // トラックボールが動いていない場合の処理
-        // タイムアウトでのレイヤー切り替えは無効化
     }
 
     return mouse_report;

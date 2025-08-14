@@ -37,7 +37,7 @@ const uint16_t mouse_layer = 6;   // マウスレイヤー
 uint16_t layer_timer;             // レイヤー切り替え用タイマー
 bool scroll_mode = false;         // スクロールモードの状態
 uint16_t layer_timeout = 1000;    // レイヤー3から他のレイヤーに戻る時間（ミリ秒）
-int16_t movement_threshold = 3;   // レイヤー遷移のための最小動き量の閾値
+int16_t movement_threshold = 2;   // レイヤー遷移のための最小動き量の閾値
 
 // スクロール制御用の変数
 int16_t scroll_v_counter = 0;

@@ -76,7 +76,6 @@ $ make flash
 $ make flash KEYMAP=default
 $ make flash KEYMAP=via
 $ make flash KEYMAP=develop
-$ make flash KEYMAP=takashicompany
 
 # Show available commands and usage examples
 $ make help

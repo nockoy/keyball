@@ -1,19 +1,5 @@
-/*
-Copyright 2023 @takashicompany
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+// Custom keymap for nockoy
+// Based on Keyball44 firmware
 
 #include QMK_KEYBOARD_H
 #include "quantum.h"
@@ -27,7 +13,7 @@ enum custom_keycodes {
     KC_PLACEHOLDER_5,    // User5 (未使用)
     KC_CTRL_W,           // User6 - Ctrl+W (タブを閉じる)
     KC_CTRL_R,           // User7 - Ctrl+R (ページリロード)
-    KC_CHROME_PREV_TAB,  // User8 - Cmd+Option+左矢印 (前のタブ)
+    KC_CHROME_PREV_TAB,  // User8 - Cmd+Option+左矢印 (前のタブ) 
     KC_CHROME_NEXT_TAB,  // User9 - Cmd+Option+右矢印 (次のタブ)
     KC_CMD_M,            // User10 - Cmd+M
 };

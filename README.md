@@ -69,7 +69,7 @@ Make sure you have QMK installed and properly set up in `~/qmk` directory as des
 From the project root directory, you can use the following commands:
 
 ```console
-# Flash with default keymap (nockoy_no_aml)
+# Flash with default keymap (nockoy)
 $ make flash
 
 # Flash with a specific keymap
@@ -88,9 +88,7 @@ You can use any keymap available in the `keyball44/keymaps/` directory:
 
 - `default` - Base keymap
 - `develop` - Development keymap
-- `nockoy_aml` - Nockoy keymap with AML
-- `nockoy_no_aml` - Nockoy keymap without AML (default)
-- `takashicompany` - takashicompany's keymap
+- `nockoy` - Nockoy keymap without AML (default)
 - `test` - Test keymap
 - `via` - VIA-compatible keymap
 

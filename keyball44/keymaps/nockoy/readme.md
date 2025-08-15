@@ -1,4 +1,4 @@
-# Keyball44 カスタムファームウェア (nockoy_no_aml)
+# Keyball44 カスタムファームウェア (nockoy)
 
 シンプルなマウスレイヤー実装を採用した Keyball44 用カスタムファームウェアです。
 
@@ -86,7 +86,7 @@ A      S        D         F        ...  J        K         L          ;
 以下のコマンドでファームウェアをビルド・書き込みできます：
 
 ```bash
-qmk flash -kb keyball/keyball44 -km nockoy_no_aml
+qmk flash -kb keyball/keyball44 -km nockoy
 ```
 
 または、QMK Toolbox を使用して hex ファイルを書き込んでください。

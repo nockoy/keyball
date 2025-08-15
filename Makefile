@@ -1,7 +1,7 @@
 # Keyball QMK Flash Makefile
 
 # Default keymap (can be overridden)
-KEYMAP ?= nockoy_no_aml
+KEYMAP ?= nockoy
 
 .PHONY: flash-keyball44 flash help
 

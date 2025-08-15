@@ -87,7 +87,7 @@ You can use any keymap available in the `keyball44/keymaps/` directory:
 
 - `default` - Base keymap
 - `develop` - Development keymap
-- `nockoy` - Nockoy keymap without AML (default)
+- `nockoy` - Nockoy keymap (default)
 - `test` - Test keymap
 - `via` - VIA-compatible keymap
 

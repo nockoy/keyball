@@ -7,11 +7,11 @@ KEYMAP ?= nockoy
 
 # Flash keyball44 with specified keymap
 flash-keyball44:
-	cd ~/qmk && qmk flash -kb keyball/keyball44 -km $(KEYMAP)
+	cd ~/qmk_firmware && qmk flash -kb keyball/keyball44 -km $(KEYMAP)
 
 # Alternative target with shorter name
 flash:
-	cd ~/qmk && qmk flash -kb keyball/keyball44 -km $(KEYMAP)
+	cd ~/qmk_firmware && qmk flash -kb keyball/keyball44 -km $(KEYMAP)
 
 help:
 	@echo "Available targets:"

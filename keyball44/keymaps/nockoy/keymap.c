@@ -28,7 +28,6 @@ int16_t movement_threshold = 2;   // レイヤー遷移のための最小動き�
 // スクロール制御用の変数
 int16_t scroll_v_counter = 0;
 int16_t scroll_h_counter = 0;
-int16_t scroll_threshold = 10;
 
 // マウスレイヤーを有効にする
 void enable_mouse_layer(void) {
@@ -189,39 +188,20 @@ report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
         }
         
         if (scroll_mode) {
-            // スクロールモードの場合
-            int8_t scroll_h = 0;
-            int8_t scroll_v = 0;
-            
+            // スクロールモードの場合（keyball組み込みのスクロール除数を使用）
+            uint8_t div = keyball_get_scroll_div() - 1;
             scroll_h_counter += current_x;
             scroll_v_counter += current_y;
-            
-            // 水平スクロール
-            while (my_abs(scroll_h_counter) > scroll_threshold) {
-                if (scroll_h_counter > 0) {
-                    scroll_h_counter -= scroll_threshold;
-                    scroll_h = 1;
-                } else {
-                    scroll_h_counter += scroll_threshold;
-                    scroll_h = -1;
-                }
-            }
-            
-            // 垂直スクロール
-            while (my_abs(scroll_v_counter) > scroll_threshold) {
-                if (scroll_v_counter > 0) {
-                    scroll_v_counter -= scroll_threshold;
-                    scroll_v = -1;
-                } else {
-                    scroll_v_counter += scroll_threshold;
-                    scroll_v = 1;
-                }
-            }
-            
+
+            int16_t h = scroll_h_counter >> div;
+            scroll_h_counter -= h << div;
+            int16_t v = scroll_v_counter >> div;
+            scroll_v_counter -= v << div;
+
             mouse_report.x = 0;
             mouse_report.y = 0;
-            mouse_report.h = scroll_h;
-            mouse_report.v = scroll_v;
+            mouse_report.h = h;
+            mouse_report.v = -v;
         }
     }
 
